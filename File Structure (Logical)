@@ -1,0 +1,16 @@
+deepfake-audio-mini/
+├── backend/
+│ ├── app.py # Flask API for inference
+│ ├── model.py # Model classes (MFCC CNN + wrapper)
+│ ├── train.py # Simple training script (optional)
+│ ├── utils.py # audio feature utilities
+│ ├── requirements.txt
+│ └── saved_models/ # example: mfcc_cnn.pth
+├── frontend/
+│ ├── public/index.html
+│ ├── src/
+│ │ ├── App.jsx
+│ │ ├── index.jsx
+│ │ └── api.js
+│ └── package.json
+└── README.md
