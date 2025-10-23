@@ -1,16 +1,14 @@
-deepfake-audio-mini/
-├── backend/
-│ ├── app.py # Flask API for inference
-│ ├── model.py # Model classes (MFCC CNN + wrapper)
-│ ├── train.py # Simple training script (optional)
-│ ├── utils.py # audio feature utilities
-│ ├── requirements.txt
-│ └── saved_models/ # example: mfcc_cnn.pth
-├── frontend/
-│ ├── public/index.html
-│ ├── src/
-│ │ ├── App.jsx
-│ │ ├── index.jsx
-│ │ └── api.js
-│ └── package.json
-└── README.md
+data
+├── real
+│   └── wavs
+└── fake
+    ├── common_voices_prompts_from_conformer_fastspeech2_pwg_ljspeech
+    ├── jsut_multi_band_melgan
+    ├── jsut_parallel_wavegan
+    ├── ljspeech_full_band_melgan
+    ├── ljspeech_hifiGAN
+    ├── ljspeech_melgan
+    ├── ljspeech_melgan_large
+    ├── ljspeech_multi_band_melgan
+    ├── ljspeech_parallel_wavegan
+    └── ljspeech_waveglow
