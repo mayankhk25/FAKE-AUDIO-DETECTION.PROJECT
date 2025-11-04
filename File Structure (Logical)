@@ -1,14 +1,29 @@
-data
-├── real
-│   └── wavs
-└── fake
-    ├── common_voices_prompts_from_conformer_fastspeech2_pwg_ljspeech
-    ├── jsut_multi_band_melgan
-    ├── jsut_parallel_wavegan
-    ├── ljspeech_full_band_melgan
-    ├── ljspeech_hifiGAN
-    ├── ljspeech_melgan
-    ├── ljspeech_melgan_large
-    ├── ljspeech_multi_band_melgan
-    ├── ljspeech_parallel_wavegan
-    └── ljspeech_waveglow
+name: compile_results
+
+on:
+    push:
+        branches:
+            - master
+jobs:
+    run_script:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-python@v2
+              with:
+                  python-version: '3.10'
+            - name: Install Dependencies
+              run: |
+                  pip3 install --upgrade pip wheel setuptools arxiv-dl
+                  pip3 install -r requirements.txt
+            - name: Run the Script
+              run: |
+                  python3 metrics.py
+            - name: Push to Master
+              run: |
+                  git config user.name github-actions
+                  git config user.email github-actions@github.com
+                  git add --all
+                  git status -s | grep "^[MADRCU]" || exit 0
+                  git commit -m "Compile experimental results"
+                  git push origin HEAD:master
